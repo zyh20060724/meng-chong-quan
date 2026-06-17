@@ -1,0 +1,135 @@
+.gomoku {
+  width: 100%;
+}
+
+.gomoku__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.gomoku__status {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.gomoku__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--ink-light);
+  margin-bottom: 12px;
+}
+
+.gomoku__legend span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.gomoku__board-wrap {
+  padding: 8px;
+  overflow-x: auto;
+}
+
+.gomoku__board {
+  display: grid;
+  gap: 0;
+  background: #E8C872;
+  border: 2px solid var(--ink);
+  min-width: min(100%, 320px);
+  aspect-ratio: 1;
+  margin: 0 auto;
+}
+
+.gomoku__cell {
+  aspect-ratio: 1;
+  border: 1px solid rgba(61, 61, 61, 0.25);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+}
+
+.gomoku__cell:disabled {
+  cursor: default;
+}
+
+.gomoku__cell--last::after {
+  content: '';
+  position: absolute;
+  inset: 15%;
+  border: 2px solid var(--danger);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.gomoku__stone {
+  display: block;
+  width: 78%;
+  height: 78%;
+  border-radius: 50%;
+  border: 2px solid var(--ink);
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.gomoku__stone--black {
+  background: radial-gradient(circle at 35% 35%, #555, #1a1a1a);
+}
+
+.gomoku__stone--white {
+  background: radial-gradient(circle at 35% 35%, #fff, #ddd);
+}
+
+.gomoku__legend .gomoku__stone {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+}
+
+.gomoku__difficulty {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.gomoku__diff-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 4px;
+  background: white;
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 11px;
+}
+
+.gomoku__diff-btn strong {
+  font-size: 13px;
+}
+
+.gomoku__diff-btn span {
+  color: var(--accent-dark);
+  font-size: 10px;
+}
+
+.gomoku__diff-btn--active {
+  background: var(--accent);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.gomoku__diff-desc {
+  font-size: 12px;
+  color: var(--ink-light);
+  margin-bottom: 10px;
+  text-align: center;
+}

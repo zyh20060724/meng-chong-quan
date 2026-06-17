@@ -1,0 +1,10 @@
+.home {
+  padding: 20px 16px;
+}
+
+.home__feed {
+  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}

@@ -1,0 +1,297 @@
+.pet-nest__hint {
+  font-size: 11px;
+  color: var(--ink-light);
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.pet-nest__scene {
+  position: relative;
+  height: 260px;
+  border: 2px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  touch-action: none;
+  user-select: none;
+  box-shadow: var(--shadow-md), inset 0 2px 12px rgba(74, 63, 53, 0.06);
+}
+
+.pet-nest__sky {
+  position: absolute;
+  inset: 0;
+  bottom: 35%;
+  background: linear-gradient(to bottom, #E8F4FD, #D4ECFA);
+}
+
+.pet-nest__floor {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 35%;
+  background: #C8E6C9;
+  border-top: 2px dashed rgba(61, 61, 61, 0.2);
+}
+
+.pet-nest__scene--dragging {
+  cursor: grabbing;
+}
+
+.pet-nest__draggable {
+  position: absolute;
+  left: calc(var(--nest-x) * 1%);
+  top: calc(var(--nest-y) * 1%);
+  transform: translate(-50%, -50%);
+  touch-action: none;
+}
+
+.pet-nest__draggable--active {
+  will-change: transform;
+  z-index: 30;
+  cursor: grabbing;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+}
+
+.pet-nest__pet {
+  cursor: grab;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pet-nest__pet--dragging {
+  cursor: grabbing;
+  z-index: 20;
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.pet-nest__pet-name {
+  font-size: 10px;
+  background: white;
+  border: 1px solid var(--ink);
+  border-radius: 8px;
+  padding: 1px 6px;
+  margin-top: 2px;
+}
+.pet-nest__pet--feed-bone,
+.pet-nest__pet--feed-carrot,
+.pet-nest__pet--feed-apple,
+.pet-nest__pet--feed-fish,
+.pet-nest__pet--feed-cookie,
+.pet-nest__pet--play-ball,
+.pet-nest__pet--play-yoyo,
+.pet-nest__pet--play-sing,
+.pet-nest__pet--dress-equip,
+.pet-nest__pet--dress-buy,
+.pet-nest__pet--dress-unequip {
+  z-index: 15;
+}
+
+.pet-nest__bubble {
+  position: absolute;
+  top: -52px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--paper);
+  border: 2px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  padding: 4px 10px;
+  font-size: 11px;
+  white-space: nowrap;
+  box-shadow: var(--shadow-sm);
+  animation: bubblePop 0.35s var(--ease-bounce) forwards;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.pet-nest__bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: var(--border-strong);
+}
+
+@keyframes bubblePop {
+  0% { opacity: 0; transform: translateX(-50%) scale(0.6) translateY(8px); }
+  100% { opacity: 1; transform: translateX(-50%) scale(1) translateY(0); }
+}
+
+.pet-nest__fx {
+  position: absolute;
+  font-size: 24px;
+  pointer-events: none;
+}
+
+.pet-nest__fx--main {
+  animation: fxFloat 1.2s ease forwards;
+}
+
+.pet-nest__fx--feed {
+  top: -20px;
+  right: -14px;
+}
+
+.pet-nest__fx--play {
+  top: -28px;
+  left: -18px;
+  animation: fxBounce 1.2s ease forwards;
+}
+
+.pet-nest__fx--dress {
+  top: -30px;
+  right: -20px;
+  font-size: 30px;
+  animation: fxDressSpin 1.4s ease forwards;
+}
+
+.pet-nest__particle {
+  position: absolute;
+  font-size: 14px;
+  pointer-events: none;
+  animation: particleBurst 1.3s ease forwards;
+}
+
+.pet-nest__particle--0 { top: -36px; left: -24px; animation-delay: 0.05s; }
+.pet-nest__particle--1 { top: -40px; right: -20px; animation-delay: 0.15s; }
+.pet-nest__particle--2 { top: -16px; left: -30px; animation-delay: 0.25s; }
+.pet-nest__particle--3 { top: -20px; right: -28px; animation-delay: 0.35s; }
+
+@keyframes fxFloat {
+  0% { opacity: 1; transform: translateY(0) scale(0.5); }
+  50% { opacity: 1; transform: translateY(-16px) scale(1.2); }
+  100% { opacity: 0; transform: translateY(-32px) scale(0.8); }
+}
+
+@keyframes fxBounce {
+  0% { opacity: 1; transform: translateY(0) scale(0.6); }
+  30% { opacity: 1; transform: translateY(-28px) scale(1.1); }
+  60% { opacity: 1; transform: translateY(-8px) scale(1); }
+  100% { opacity: 0; transform: translateY(-40px) scale(0.7); }
+}
+
+@keyframes fxDressSpin {
+  0% { opacity: 0; transform: scale(0.3) rotate(-20deg); }
+  30% { opacity: 1; transform: scale(1.3) rotate(10deg); }
+  70% { opacity: 1; transform: scale(1.1) rotate(-5deg); }
+  100% { opacity: 0; transform: scale(0.8) rotate(0deg) translateY(-20px); }
+}
+
+@keyframes particleBurst {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.4); }
+  25% { opacity: 1; transform: translate(-6px, -12px) scale(1); }
+  100% { opacity: 0; transform: translate(-12px, -36px) scale(0.6); }
+}
+
+/* 场景氛围 */
+.pet-nest__scene--feed-fish .pet-nest__sky {
+  background: linear-gradient(to bottom, #D4ECFA, #B8D4F0);
+}
+
+.pet-nest__scene--play-sing .pet-nest__sky {
+  background: linear-gradient(to bottom, #FDE8FF, #E8D4FA);
+}
+
+.pet-nest__scene--dress-equip .pet-nest__floor,
+.pet-nest__scene--dress-buy .pet-nest__floor {
+  background: #D4F0D4;
+}
+
+.pet-nest__scene--play-yoyo {
+  animation: sceneWobble 1.2s ease;
+}
+
+@keyframes sceneWobble {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(0.4deg); }
+  75% { transform: rotate(-0.4deg); }
+}
+
+.pet-nest__furniture {
+  cursor: grab;
+  z-index: 5;
+  font-size: 32px;
+  line-height: 1;
+}
+
+.pet-nest__furniture--dragging {
+  cursor: grabbing;
+  z-index: 15;
+}
+
+.pet-nest__furniture--selected {
+  filter: drop-shadow(0 0 6px var(--accent-dark));
+}
+
+.pet-nest__furniture-emoji {
+  display: block;
+  animation: wiggle 3s ease-in-out infinite;
+}
+
+.pet-nest__store-btn {
+  position: absolute;
+  top: -8px;
+  right: -20px;
+  font-size: 10px;
+  padding: 2px 6px;
+  background: var(--danger);
+  color: white;
+  border: 1px solid var(--ink);
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  white-space: nowrap;
+}
+
+.pet-nest__storage {
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.pet-nest__storage-label {
+  font-size: 12px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.pet-nest__storage-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pet-nest__storage-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 10px;
+  background: white;
+  border: 2px dashed var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 24px;
+  font-family: var(--font-body);
+  transition: all 0.15s;
+}
+
+.pet-nest__storage-item span {
+  font-size: 10px;
+  color: var(--ink-light);
+}
+
+.pet-nest__storage-item:hover {
+  border-color: var(--accent-dark);
+  background: var(--bg-warm);
+  transform: scale(1.05);
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-5deg); }
+  75% { transform: rotate(5deg); }
+}

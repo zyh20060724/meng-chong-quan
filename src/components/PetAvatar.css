@@ -1,0 +1,238 @@
+.pet-avatar {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pet-avatar__circle {
+  border-radius: 50%;
+  background: var(--pet-color, #FFB347);
+  border: 2px solid var(--border-strong);
+  box-shadow: var(--shadow-sm), 2px 2px 0 rgba(74, 63, 53, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 0.25s var(--ease-bounce), box-shadow 0.25s;
+}
+
+.pet-avatar:hover .pet-avatar__circle {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-md), var(--shadow-glow);
+}
+
+.pet-avatar--sm .pet-avatar__circle { width: 36px; height: 36px; font-size: 18px; }
+.pet-avatar--md .pet-avatar__circle { width: 48px; height: 48px; font-size: 24px; }
+.pet-avatar--lg .pet-avatar__circle { width: 72px; height: 72px; font-size: 36px; }
+.pet-avatar--xl .pet-avatar__circle { width: 120px; height: 120px; font-size: 60px; }
+
+.pet-avatar__emoji {
+  line-height: 1;
+}
+
+.pet-avatar__outfit {
+  position: absolute;
+  top: -8px;
+  right: -4px;
+  font-size: 0.5em;
+  filter: drop-shadow(1px 1px 0 rgba(74, 63, 53, 0.2));
+}
+
+.pet-avatar__mood {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  font-size: 14px;
+  background: var(--paper);
+  border: 2px solid var(--border-strong);
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.pet-avatar--lg .pet-avatar__mood,
+.pet-avatar--xl .pet-avatar__mood {
+  width: 28px;
+  height: 28px;
+  font-size: 16px;
+}
+
+/* 小窝内扁平精灵 */
+.pet-sprite {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+}
+
+.pet-sprite__emoji {
+  display: block;
+  filter: drop-shadow(2px 3px 0 rgba(74, 63, 53, 0.25));
+  animation: petBob 2.4s ease-in-out infinite;
+}
+
+.pet-sprite--sm .pet-sprite__emoji { font-size: 28px; }
+.pet-sprite--md .pet-sprite__emoji { font-size: 36px; }
+.pet-sprite--lg .pet-sprite__emoji { font-size: 48px; }
+.pet-sprite--xl .pet-sprite__emoji { font-size: 64px; }
+
+.pet-sprite__shadow {
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 8px;
+  background: rgba(74, 63, 53, 0.1);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.pet-sprite--lg .pet-sprite__shadow { height: 10px; width: 65%; }
+.pet-sprite--xl .pet-sprite__shadow { height: 12px; width: 60%; }
+
+.pet-sprite__outfit {
+  position: absolute;
+  top: -6px;
+  right: -2px;
+  font-size: 0.45em;
+  filter: drop-shadow(1px 1px 0 rgba(74, 63, 53, 0.25));
+}
+
+.pet-sprite--left .pet-sprite__emoji {
+  animation: petBobLeft 2.4s ease-in-out infinite;
+}
+
+@keyframes petBob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@keyframes petBobLeft {
+  0%, 100% { transform: scaleX(-1) translateY(0); }
+  50% { transform: scaleX(-1) translateY(-3px); }
+}
+
+.pet-nest__pet--walking .pet-sprite__emoji {
+  animation: petWalk 0.35s ease-in-out infinite;
+}
+
+.pet-nest__pet--walking.pet-nest__pet--face-left .pet-sprite__emoji {
+  animation: petWalkLeft 0.35s ease-in-out infinite;
+}
+
+@keyframes petWalk {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes petWalkLeft {
+  0%, 100% { transform: scaleX(-1) translateY(0); }
+  50% { transform: scaleX(-1) translateY(-5px); }
+}
+
+.pet-nest__pet--eating .pet-sprite__emoji,
+.pet-nest__pet--feed-bone .pet-sprite__emoji {
+  animation: petEatBone 0.55s ease infinite;
+}
+
+.pet-nest__pet--feed-carrot .pet-sprite__emoji {
+  animation: petEatCarrot 0.6s ease infinite;
+}
+
+.pet-nest__pet--feed-apple .pet-sprite__emoji {
+  animation: petEatApple 0.7s ease infinite;
+}
+
+.pet-nest__pet--feed-fish .pet-sprite__emoji {
+  animation: petEatFish 0.45s ease infinite;
+}
+
+.pet-nest__pet--feed-cookie .pet-sprite__emoji {
+  animation: petEatCookie 0.5s ease infinite;
+}
+
+.pet-nest__pet--playing .pet-sprite__emoji,
+.pet-nest__pet--play-ball .pet-sprite__emoji {
+  animation: petPlayBall 0.65s ease infinite;
+}
+
+.pet-nest__pet--play-yoyo .pet-sprite__emoji {
+  animation: petPlayYoyo 0.8s ease infinite;
+}
+
+.pet-nest__pet--play-sing .pet-sprite__emoji {
+  animation: petPlaySing 0.9s ease-in-out infinite;
+}
+
+.pet-nest__pet--dress-equip .pet-sprite__emoji,
+.pet-nest__pet--dress-buy .pet-sprite__emoji {
+  animation: petDressEquip 1.2s ease infinite;
+}
+
+.pet-nest__pet--dress-unequip .pet-sprite__emoji {
+  animation: petDressUnequip 1s ease infinite;
+}
+
+@keyframes petEatBone {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  35% { transform: translateY(-6px) rotate(-8deg); }
+  70% { transform: translateY(-2px) rotate(6deg); }
+}
+
+@keyframes petEatCarrot {
+  0%, 100% { transform: translateX(0) rotate(0); }
+  50% { transform: translateX(-4px) rotate(-12deg); }
+}
+
+@keyframes petEatApple {
+  0%, 100% { transform: translateY(0) scale(1); }
+  40% { transform: translateY(-10px) scale(1.08); }
+}
+
+@keyframes petEatFish {
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-3px) translateX(3px); }
+  75% { transform: translateY(-3px) translateX(-3px); }
+}
+
+@keyframes petEatCookie {
+  0%, 100% { transform: scale(1) rotate(0); }
+  30% { transform: scale(1.05) rotate(-5deg); }
+  60% { transform: scale(0.98) rotate(5deg); }
+}
+
+@keyframes petPlayBall {
+  0%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-14px) rotate(-12deg); }
+  60% { transform: translateY(-4px) rotate(8deg); }
+}
+
+@keyframes petPlayYoyo {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(-15deg); }
+  75% { transform: rotate(15deg); }
+}
+
+@keyframes petPlaySing {
+  0%, 100% { transform: translateX(0) rotate(0); }
+  33% { transform: translateX(-6px) rotate(-8deg); }
+  66% { transform: translateX(6px) rotate(8deg); }
+}
+
+@keyframes petDressEquip {
+  0%, 100% { transform: scale(1) rotate(0); }
+  40% { transform: scale(1.12) rotate(-6deg); }
+  70% { transform: scale(1.06) rotate(6deg); }
+}
+
+@keyframes petDressUnequip {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px) scale(0.96); }
+}
